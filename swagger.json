@@ -561,7 +561,126 @@
             }
           }
         }
-       }
+       },
+
+       "/usuarios": {
+        "get": {
+          "tags": ["Usuarios"],
+          "summary": "Obtiene los usuarios",
+          "description": "Regresa un array de objetos con todos los datos del usuario",
+          "responses": {
+            "200": {
+              "description": "Solicitud de usuario exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        }
+      },
+      "/usuarios/{id}": {
+        "get": {
+          "tags": ["Libros"],
+          "summary": "Búsqueda de Usuario",
+          "description": "Muestra los datos de un Usuario",
+          "responses": {
+            "200": {
+              "description": "Solicitud exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        },
+        "put": {
+          "tags": ["Usuarios"],
+          "summary": "Actualiza un usuario",
+          "description": "Busca un usuario por su id y actualiza los datos modificados",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Usuario actualizado con exito",
+              "content": {
+                "application/json": {
+                  "schema": {
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Usuarios"],
+          "summary": "Elimina un usuario de la base de datos",
+          "description": "Busca un usuario por su id y lo elimina",
+          "responses": {
+            "200": {
+              "description": "Usuario eliminado exitosamente"
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        }
+      }
     },
     "components": {
       "schemas": {
