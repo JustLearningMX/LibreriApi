@@ -562,9 +562,81 @@
           }
         }
        },
+       
+      "/usuarios": {
+        "get": {
+          "tags": ["Usuarios"],
+          "summary": "Obtiene los usuarios",
+          "description": "Regresa un array de objetos con todos los datos del usuario",
+          "responses": {
+            "200": {
+              "description": "Solicitud de usuario exitosa",
+              "content": {
+                "application/json": {
+                  "schema": {
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Usuarios"
+          ],
+          "summary": "Inserta un nuevo usuario a la BD",
+          "description": "Crea un nuevo usuario con sus datos y lo inserta en la base de datos.",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Usuario ingresado exitosamente",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        }
+      },
       "/usuarios/{id}": {
         "get": {
-          "tags": ["Libros"],
+          "tags": ["Usuarios"],
           "summary": "Búsqueda de Usuario",
           "description": "Muestra los datos de un Usuario",
           "responses": {
@@ -634,6 +706,49 @@
           "responses": {
             "200": {
               "description": "Usuario eliminado exitosamente"
+            },
+            "400": {
+              "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
+            },
+            "401": {
+              "description": "(Unauthorized) No hay autorización para llamar el servicio"
+            },
+            "404": {
+              "description": "(NotFound) No se encontró información"
+            },
+            "500": {
+              "description": "(ServerError) Error en el servidor"
+            }
+          }
+        }
+      },
+      "/usuarios/entrar": {
+        "post": {
+          "tags": [
+            "Usuarios"
+          ],
+          "summary": "Inicia sesión",
+          "description": "inicia sesión con el email y la contraseña",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Sesión iniciada exitosamente",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
             },
             "400": {
               "description": "(BadRequest) Datos enviados incorrectos o hay datos obligatorios no enviados"
