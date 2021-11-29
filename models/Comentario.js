@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const ComentarioSchema = new mongoose.Schema({
   nombre: {type: String, required: true},
-  email: {type: String, unique: true, required: [true, "Es requerido el email"], match: [/\S+@\S+.\S+/, "email invalido"], index: true},
+  email: {type: String, required: [true, "Es requerido el email"], match: [/\S+@\S+.\S+/, "email invalido"], index: true}, //unique: true, 
   libro_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Libros'},
   texto: {type: String, required: true},
   fecha : Date,
