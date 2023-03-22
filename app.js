@@ -14,9 +14,16 @@ app.use(bodyParser.json());
 const mongoose = require('mongoose');//Importamos
 //Nos conectamos
 mongoose.connect(
-  process.env.MONGO_URI, // obtiene la url de conexión desde las variables de entorno
+  // process.env.MONGO_URI, // obtiene la url de conexión desde las variables de entorno
+  // mongoose.connect(`mongodb+srv://${process.env.DBUSER}:${process.env.PASSWORD}@cluster0.0l8wy.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`);
+  `mongodb+srv://Admin:adminEquipo3@cluster0.0l8wy.mongodb.net/Libreria?retryWrites=true&w=majority`,
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+).then(() => {
+  console.log("Conectado a la base de datos");
+}).catch((err) => {
+  console.log("Error al conectarse a la base de datos", err);
+});
+
 //Activamos opción de debuggeo para errores
 mongoose.set("debug", true);
 /**CONFIGURACIÓN DE MONGOOSE */
@@ -32,6 +39,7 @@ require('./config/passport');
 app.use('/v1', require('./routes'));
 app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(process.env.PORT, () => {
-	console.log(`Server listening on port ${process.env.PORT}`)
+const PORT=3012
+app.listen(process.env.PORT || PORT, () => {
+	console.log(`Server listening on port ${PORT}`)
 })

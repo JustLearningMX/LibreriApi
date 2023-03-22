@@ -1,10 +1,10 @@
 //Modelo de Comentario
 
 const mongoose = require("mongoose");
-
+//unique: true,   , index: true, required: [true, "Es requerido el email"], match: [/\S+@\S+.\S+/, "email invalido"]
 const ComentarioSchema = new mongoose.Schema({
   nombre: {type: String, required: true},
-  email: {type: String, required: [true, "Es requerido el email"], match: [/\S+@\S+.\S+/, "email invalido"]}, //unique: true,   , index: true
+  email: {type: String, index: true, required: [true, "Es requerido el email"], match: [/\S+@\S+.\S+/, "email invalido"], sparse:true}, 
   libro_id: {type: mongoose.Schema.Types.ObjectId, ref: 'Libros'},
   texto: {type: String, required: true},
   fecha : Date,
