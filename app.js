@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+require('dotenv').config(); //Configura variables de entorno
 
 const cors = require('cors');
 
